@@ -2,7 +2,7 @@
 /**
  * search_cwd - look for current working dir
  * @filename: file name
- * @er: error message
+ * @er: return
  * Return: current working dir
  */
 char *search_cwd(char *filename, char *er)
@@ -37,9 +37,13 @@ char *search_cwd(char *filename, char *er)
 				closedir(dir);
 
 				if (!(access(ret, X_OK)))
-				       printf(ret);
+				{
+					return (ret);
+				}
 				else
+				{
 					write(2, er, 5);
+				}
 			}
 		}
 	}
