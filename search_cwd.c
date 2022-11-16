@@ -2,7 +2,11 @@
 /**
  * search_cwd - look for current working dir
  * @filename: file name
+<<<<<<< HEAD
  * @er: return
+=======
+ * @er: error message
+>>>>>>> e9b04be156901bee54aa77b247f369036a765cae
  * Return: current working dir
  */
 char *search_cwd(char *filename, char *er)
@@ -27,16 +31,23 @@ char *search_cwd(char *filename, char *er)
 		for (i = 0; sd->d_name[i] && filename[i]; i++)
 		{
 			if (sd->d_name[i] != filename[i])
+			{
 				break;
+			}
 			if (i == (len - 1) && !(sd->d_name[i + 1]))
 			{
 				strcpy(ret, "./");
 				strcat(ret, filename);
 				closedir(dir);
+
 				if (!(access(ret, X_OK)))
+<<<<<<< HEAD
 				{
 					return (ret);
 				}
+=======
+				       printf(ret);
+>>>>>>> e9b04be156901bee54aa77b247f369036a765cae
 				else
 				{
 					write(2, er, 5);
