@@ -17,16 +17,17 @@ char *search_cwd(char *filename, char *er)
 	ret = malloc(sizeof(char) * (len + 3));
 	dir = opendir(".");
 	if (!dir)
+	{
 		printf("Error! Unable to open directory.\n");
 		exit(0);
+	}
 	while ((sd = readdir(dir)))
 	{
 		for (i = 0; sd->d_name[i] && filename[i]; i++)
 		{
 			if (sd->d_name[i] != filename[i])
-			{
 				break;
-			}
+
 			if (i == (len - 1) && !(sd->d_name[i + 1]))
 			{
 				strcpy(ret, "./");
